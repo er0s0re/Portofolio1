@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kasir Online - Project Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: var(--background-color);
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--background-color), rgba(255,255,255,0));
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .section-title:hover::after {
+            width: 100%;
+        }
+        .project-image {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .project-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .image-description {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .image-description:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Eros Alfedo Hermanto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">Sistem Kasir Online</h1>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Solusi lengkap untuk manajemen toko dan pemrosesan penjualan</p>
+        </div>
+    </section>
+
+    <!-- Project Description -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title" data-aos="fade-up">Gambaran Proyek</h2>
+                    <p data-aos="fade-up" style="font-size: 1.2rem; line-height: 1.6;" data-aos-delay="100">Sistem Kasir Online adalah solusi berbasis web yang dirancang untuk mengoptimalkan manajemen inventaris dan pelacakan 
+                        penjualan bagi bisnis dari berbagai skala. Dibangun menggunakan PHP, MySQL, dan Bootstrap, sistem ini menghadirkan antarmuka yang intuitif dengan 
+                        kemampuan backend yang kuat untuk membantu bisnis dalam mengelola stok, memproses penjualan, serta menghasilkan laporan yang informatif</p>
+                    <p data-aos="fade-up" style="font-size: 1.2rem; line-height: 1.6;" data-aos-delay="200">Fitur unggulan dari sistem ini meliputi pembaruan stok real-time, pemindaian barcode, akses multi-pengguna 
+                        dengan izin berbasis peran, serta alat laporan yang dapat disesuaikan. Desain responsif memungkinkan pengguna untuk mengakses dan mengelola 
+                        inventaris dari berbagai perangkat, menjadikannya solusi ideal bagi bisnis dengan banyak lokasi atau tim yang bekerja jarak jauh.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Images and Descriptions -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Project Highlights</h2>
+            
+            <!-- Image 1 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="assets/images/Kasir Online/Gambar/Halaman Utama1.png" alt="Dashboard" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="image-description">
+                        <h3>Halaman Utama Login Page</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Antarmuka login yang aman untuk akses peran admin dan kasir. Admin memiliki akses penuh ke fitur manajemen, 
+                            sementara kasir dapat mengelola transaksi penjualan dan laporan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <img src="assets/images/Kasir Online/Gambar/Kasir/iloveimg-resized/Halaman Utama Kasir.png" alt="Inventory Management" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="image-description">
+                        <h3>Kasir Utama (Checkout, Diskon, Pembayaran Tunai dan QRIS)</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Fitur checkout yang mudah digunakan memungkinkan kasir untuk mencari produk, menambahkannya 
+                            ke keranjang, menerapkan diskon, dan menyelesaikan pembayaran. Mendukung berbagai metode pembayaran, 
+                            termasuk tunai dan QRIS, dengan konfirmasi modals untuk setiap transaksi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="assets/images/Kasir Online/Gambar/Kasir/iloveimg-resized/Penjualan Kasir.png" alt="Sales Processing" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="image-description">
+                        <h3>Kasir Hasil Penjualan</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Menampilkan laporan penjualan berdasarkan ID pesanan dengan rincian lengkap, termasuk jumlah, harga, 
+                            total setelah diskon, serta metode pembayaran. Kasir dapat mencetak struk dan melihat rincian uang konsumen serta kembalian untuk 
+                            transaksi tunai.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <img src="assets/images/Kasir Online/Gambar/Admin/iloveimg-resized (1)/Dashboard.png" alt="Reporting Tools" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="image-description">
+                        <h3>Admin Utama (Dashboard)</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Dashboard admin memberikan ringkasan penting seperti penghasilan hari ini, jumlah produk, dan total 
+                            stok dalam bentuk kartu. Grafik interaktif menampilkan penghasilan 
+                            bulanan serta perbandingan mingguan, memudahkan admin untuk memantau kinerja dan tren.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="assets/images/Kasir Online/Gambar/Admin/iloveimg-resized (1)/Manage user.png" alt="Sales Processing" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="image-description">
+                        <h3>Manage User</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Halaman manajemen pengguna yang memungkinkan admin untuk menambah, mengedit, dan menghapus pengguna. 
+                            Mendukung berbagai level akses untuk mengamankan data sensitif dan pengelolaan tugas yang lebih efisien.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 6 -->
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <img src="assets/images/Kasir Online/Gambar/Admin/iloveimg-resized (1)/Manage Barang.png" alt="Reporting Tools" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="image-description">
+                        <h3>Manage Barang</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Modul pengelolaan barang dengan fitur CRUD, upload gambar, dan pemindaian barcode. Fitur tambahan seperti impor data dari 
+                            file Excel, pagination, dan pencarian memudahkan pengelolaan inventaris. Juga terdapat opsi untuk menghapus semua data produk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 7 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="assets/images/Kasir Online/Gambar/Admin/iloveimg-resized (1)/Inventory Log.png" alt="Sales Processing" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="image-description">
+                        <h3>Inventory Log</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Memantau pergerakan stok barang, termasuk barang yang masuk. Laporan ini penting untuk memastikan stok selalu 
+                            diperbarui dan mendukung penelusuran saat ada perubahan jumlah barang.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 8 -->
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <img src="assets/images/Kasir Online/Gambar/Admin/iloveimg-resized (1)/Payments_log.png" alt="Reporting Tools" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="image-description">
+                        <h3>Payment Logs</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Catatan transaksi pembayaran yang dapat dilihat oleh admin untuk 
+                            memastikan rekonsiliasi keuangan. Laporan ini mencakup rincian metode pembayaran, tanggal, serta jumlah yang diterima.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 9 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="assets/images/Kasir Online/Gambar/Admin/iloveimg-resized (1)/Laporan.png" alt="Sales Processing" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="image-description">
+                        <h3>Laporan Penjualan (PDF)</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Menyediakan laporan harian dan bulanan dalam format PDF yang dapat diunduh. Laporan ini membantu manajemen untuk mengevaluasi penjualan dan 
+                            kinerja produk berdasarkan periode tertentu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 10 -->
+            <div class="row align-items-center">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <img src="assets/images/Kasir Online/Gambar/Admin/iloveimg-resized (1)/Export Data.png" alt="Reporting Tools" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="image-description">
+                        <h3>Export Data (Excel)</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Memungkinkan admin untuk mengekspor data produk dan penjualan dalam format Excel. Fitur ini mendukung analisis mendalam dan pelaporan secara manual atau otomatis, serta mempermudah pencatatan dan audit.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title" data-aos="fade-up">Ready to streamline your inventory management?</h2>
+            <p class="mb-4" data-aos="fade-up" data-aos-delay="100">Contact us to schedule a demo or learn more about how our Online Cash Register System can benefit your business</p>
+            <a href="mailto:erosalfedo1@gmail.com" class="btn btn-lg btn-custom" data-aos="fade-up" data-aos-delay="200">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Eros Alfedo Hermanto. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repavingers - Project Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #00ff48;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: var(--background-color);
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--background-color), rgba(255,255,255,0));
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .section-title:hover::after {
+            width: 100%;
+        }
+        .project-image {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .project-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .image-description {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .image-description:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-custom {
+            background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Jarak antara ikon dan teks */
+    transition: all 0.3s ease;
+    border-radius: 8px;
+        }
+        .btn-custom i {
+    font-size: 20px; /* Ukuran ikon */
+}
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Eros Alfedo Hermanto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">Repavingers</h1>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Menghubungkan Limbah Plastik, Komunitas Lingkungan, dan Produsen Paving</p>
+        </div>
+    </section>
+
+    <!-- Project Description -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title" data-aos="fade-up">Gambaran Proyek</h2>
+                    <p style="font-size: 1.2rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="100">Repavingers adalah aplikasi berbasis web yang dirancang untuk mengatasi masalah limbah plastik di Indonesia
+                         dengan melibatkan berbagai pihak. Masyarakat berperan sebagai penjual limbah plastik, komunitas peduli lingkungan sebagai distributor, 
+                         dan produsen paving sebagai pembeli dan produsen. Melalui platform ini, Repavingers memfasilitasi transaksi jual beli limbah plastik 
+                         dan berupaya meningkatkan kesadaran publik tentang pentingnya pengelolaan limbah yang efektif.</p>
+                    <p style="font-size: 1.2rem; line-height: 1.6;" data-aos="fade-up" data-aos-delay="200">Proyek ini tidak hanya berfokus pada pengurangan limbah plastik tetapi juga mendorong peralihan dari paving 
+                        konvensional ke paving ramah lingkungan. Dengan menggandeng mitra seperti toko X, Repavingers menawarkan manfaat ekonomis bagi 
+                        pabrik paving yang dapat memperoleh bahan baku dengan harga lebih murah, serta menciptakan pasar bagi penjual limbah. Selain itu, 
+                        proyek ini mendukung upaya pemerintah dalam pengelolaan limbah yang lebih efisien, sehingga berkontribusi pada lingkungan yang lebih
+                         bersih dan sehat bagi masyarakat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Images and Descriptions -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Project Highlights</h2>
+            
+            <!-- Image 1 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="assets/images/Repavingers/halaman utama.png" alt="Dashboard" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="image-description">
+                        <h3>Halaman Utama</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Platform Inovatif untuk Menghubungkan Penjual Limbah Plastik, Komunitas Peduli Lingkungan, dan Produsen Paving di Seluruh Indonesia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <img src="assets/images/Repavingers/Home.png" alt="Inventory Management" class="img-fluid project-image floating">
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <div class="image-description">
+                        <h3>Dashboard</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6;">Menampilkan informasi tentang pendapatan, transaksi, paving yang dibuat, dan limbah yang dihasilkan di tiga pabrik paving yang berbeda. Pengguna dapat memonitor dan mengelola proyek paving dengan lebih efektif dan efisien dengan informasi ini.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://github.com/er0s0re/Repavingers" class="btn-custom" data-aos="zoom-in">
+                    <i class="fab fa-github"></i> Jelajahi Project Lainnya di GitHub
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title" data-aos="fade-up">Project Title: Repavingers</h2>
+            <p class="mb-4" data-aos="fade-up" data-aos-delay="100">A service for creating paving from waste. Contact us to schedule a demo or learn more about how our system can benefit your business.</p>
+            <a href="mailto:erosalfedo1@gmail.com" class="btn btn-lg btn-custom" data-aos="fade-up" data-aos-delay="200">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Eros Alfedo Hermanto. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

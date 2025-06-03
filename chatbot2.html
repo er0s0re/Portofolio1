@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #25D366;
+            --secondary-color: #128C7E;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .features-section {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .tech-stack {
+            padding: 100px 0;
+        }
+        
+        .tech-card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .chat-preview {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .message {
+            max-width: 80%;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        .message.user {
+            background-color: #DCF8C6;
+            margin-left: auto;
+        }
+        
+        .message.bot {
+            background-color: white;
+        }
+        
+        .floating-image {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .screenshot-gallery {
+            position: relative;
+        }
+        
+        .screenshot-item {
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .screenshot-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .screenshot-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 9/16;
+            background: #f8f9fa;
+        }
+        
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(37, 211, 102, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .screenshot-item:hover .screenshot-overlay {
+            opacity: 1;
+        }
+        
+        .screenshot-text {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .whatsapp-frame {
+            background: #ECE5DD;
+            border-radius: 15px;
+            padding: 10px;
+        }
+        
+        .whatsapp-header {
+            background: #075E54;
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 10px;
+        }
+        
+        .whatsapp-body {
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #E5DDD5;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .modal-dialog {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: 1.75rem auto;
+        }
+        
+        .modal-content {
+            background-color: transparent;
+            border: none;
+        }
+        
+        .modal-body img {
+            max-height: 85vh;
+            width: auto;
+            margin: 0 auto;
+            display: block;
+        }
+        /* Contact Section Styles */
+        .contact-section {
+            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            box-shadow: none;
+            color: white;
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .contact-form button {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .footer {
+            background: #075E54;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">AI Chatbot</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Fitur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tech">Teknologi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold mb-4">AI Chatbot Berbasis WhatsApp</h1>
+                    <p class="lead mb-4">Solusi chatbot pintar yang mengintegrasikan WhatsApp dengan teknologi AI modern untuk memberikan pengalaman conversational yang lebih baik.</p>
+                    <button class="btn btn-light btn-lg">Pelajari Lebih Lanjut</button>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="assets/images/ChatbotWA/transparan1000x/12.png" alt="Chatbot Interface" class="img-fluid floating-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Fitur Utama</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 tech-card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Natural Language Processing</h4>
+                            <p class="card-text">Pemahaman bahasa alami yang lebih baik dengan GPT-4o-Mini</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 tech-card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Integrasi WhatsApp</h4>
+                            <p class="card-text">Komunikasi melalui platform WhatsApp menggunakan Twilio</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 tech-card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Memori Kontekstual</h4>
+                            <p class="card-text">Penyimpanan dan pengambilan informasi dengan Pinecone & Redis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+<section id="tech" class="tech-stack">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Tech Stack</h2>
+        <div class="row g-4">
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card tech-card">
+                    <div class="card-body text-center">
+                        <img src="assets/images/ChatbotWA/iloveimg-resized/Twilio.jpg" alt="WhatsApp Logo" class="tech-logo">
+                        <h5>WhatsApp (Twilio)</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card tech-card">
+                    <div class="card-body text-center">
+                        <img src="assets/images/ChatbotWA/iloveimg-resized/GPT.jpg" alt="GPT-4 Mini Logo" class="tech-logo">
+                        <h5>GPT-4o-Mini</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card tech-card">
+                    <div class="card-body text-center">
+                        <img src="assets/images/ChatbotWA/iloveimg-resized/Langchain.jpg" alt="Langchain Logo" class="tech-logo">
+                        <h5>Langchain</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card tech-card">
+                    <div class="card-body text-center">
+                        <img src="assets/images/ChatbotWA/iloveimg-resized/Pinecone.jpg" alt="Pinecone Logo" class="tech-logo">
+                        <h5>Pinecone</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="500">
+                <div class="card tech-card">
+                    <div class="card-body text-center">
+                        <img src="assets/images/ChatbotWA/iloveimg-resized/FastAPI.jpg" alt="FastAPI Logo" class="tech-logo">
+                        <h5>FastAPI</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="600">
+                <div class="card tech-card">
+                    <div class="card-body text-center">
+                        <img src="assets/images/ChatbotWA/iloveimg-resized/Redis.jpg" alt="Redis Logo" class="tech-logo">
+                        <h5>Redis</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="700">
+                <div class="card tech-card">
+                    <div class="card-body text-center">
+                        <img src="assets/images/ChatbotWA/iloveimg-resized/Python.jpg" alt="Python Logo" class="tech-logo">
+                        <h5>Python</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+     <!-- Demo Section dengan Screenshot Gallery -->
+     <section id="demo" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Demo Chatbot WhatsApp</h2>
+            <div class="row g-4">
+                <!-- Screenshot 1 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="screenshot-item">
+                        <div class="screenshot-container">
+                            <img src="assets/images/ChatbotWA/wa123/wa3.jpg" alt="Contoh percakapan pembuka" class="img-fluid">
+                            <div class="screenshot-overlay" data-bs-toggle="modal" data-bs-target="#screenshot1Modal">
+                                <div class="screenshot-text">
+                                    <h5>Percakapan Pembuka</h5>
+                                    <p>Contoh interaksi awal dengan chatbot</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Screenshot 2 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="screenshot-item">
+                        <div class="screenshot-container">
+                            <img src="assets/images/ChatbotWA/wa123/wa1.jpg" alt="Proses pencarian produk" class="img-fluid">
+                            <div class="screenshot-overlay" data-bs-toggle="modal" data-bs-target="#screenshot2Modal">
+                                <div class="screenshot-text">
+                                    <h5>Pertanyaan Kompleks</h5>
+                                    <p>Menampilkan kemampuan chatbot dalam menangani pertanyaan yang memerlukan analisis mendalam 
+                                        dan pemahaman konteks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Screenshot 3 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="screenshot-item">
+                        <div class="screenshot-container">
+                            <img src="assets/images/ChatbotWA/wa123/wa2.jpg" alt="Rekomendasi personal" class="img-fluid">
+                            <div class="screenshot-overlay" data-bs-toggle="modal" data-bs-target="#screenshot3Modal">
+                                <div class="screenshot-text">
+                                    <h5>Long-Term Memory</h5>
+                                    <p>Mengingat konteks antar sesi, memberikan pengalaman lebih personal dan relevan 
+                                        bagi pengguna.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="screenshot3Modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="/api/placeholder/360/640" alt="Rekomendasi personal" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="screenshot4Modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="/api/placeholder/360/640" alt="Proses checkout" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="screenshot5Modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="/api/placeholder/360/640" alt="Customer support" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Hubungi :</h2>
+            <div class="row g-4">
+                <!-- Contact Info Cards -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-card text-center mb-4">
+                        <div class="contact-icon">
+                            <i class="bi bi-whatsapp fs-4"></i>
+                        </div>
+                        <h4>WhatsApp</h4>
+                        <p>Via WhatsApp</p>
+                        <a href="https://wa.me/08990084293" target="_blank" class="btn btn-light">Chat Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-card text-center mb-4">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope fs-4"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>erosalfedo1@gmail.com</p>
+                        <a href="mailto:erosalfedo1@gmail.com" target="_blank" class="btn btn-light">Kirim Email</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="contact-card text-center mb-4">
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt fs-4"></i>
+                        </div>
+                        <h4>Lokasi</h4>
+                        <p>Semarang, Indonesia</p>
+                        <a href="https://maps.app.goo.gl/xhErYkeH5khxsam28" target="_blank" class="btn btn-light">Lihat Peta</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="text-center social-links" data-aos="fade-up" data-aos-delay="500">
+                <a href="https://www.facebook.com/profile.php?id=100010866336269" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/eros.alfedo/" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/eros-alfedo-hermanto/" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Eros Alfedo Hermanto. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
