@@ -7,23 +7,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* Gaya tambahan jika diperlukan, atau untuk fallback jika Tailwind gagal dimuat */
+        /* Gaya tambahan jika diperlukan */
         body {
-            font-family: 'Inter', sans-serif; /* Menggunakan font Inter seperti umumnya di Tailwind */
+            font-family: 'Inter', sans-serif; /*  */
         }
-        /* Kelas untuk menandai link navigasi aktif */
         .nav-active {
-            color: #2563eb; /* Warna biru Tailwind (blue-600) */
-            font-weight: 500; /* Medium */
+            color: #2563eb; /*  */
+            font-weight: 500; /*  */
         }
         .mobile-nav-active {
-            background-color: #eff6ff; /* Warna biru muda Tailwind (blue-50) */
-            color: #2563eb; /* Warna biru Tailwind (blue-600) */
+            background-color: #eff6ff; /*  */
+            color: #2563eb; /*  */
         }
-        /* Efek transisi halus untuk scroll */
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /*  */
         }
+
+        /* --- AWAL PERUBAHAN CSS UNTUK ANIMASI ACCORDION --- */
+        .accordion-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        /* --- AKHIR PERUBAHAN CSS UNTUK ANIMASI ACCORDION --- */
     </style>
 </head>
 <body class="min-h-screen bg-white text-gray-800">
@@ -32,22 +41,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-xl font-bold text-blue-600">Eros Alfedo Hermanto</span>
-                </div>
+                    <span class="text-xl font-bold text-blue-600">Eros Alfedo Hermanto</span> </div>
                 
                 <div id="desktop-menu" class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link hover:text-blue-600 transition-colors text-gray-600">Home</a>
                     <a href="#about" class="nav-link hover:text-blue-600 transition-colors text-gray-600">About</a>
-                    <a href="#projects" class="nav-link hover:text-blue-600 transition-colors text-gray-600">Projects</a>
-                    <a href="#skills" class="nav-link hover:text-blue-600 transition-colors text-gray-600">Skills</a>
+                    <a href="#projects" class="nav-link hover:text-blue-600 transition-colors text-gray-600">Projects</a> <a href="#skills" class="nav-link hover:text-blue-600 transition-colors text-gray-600">Skills</a>
                     <a href="#cv" class="nav-link hover:text-blue-600 transition-colors text-gray-600">CV</a>
                     <a href="#contact" class="nav-link hover:text-blue-600 transition-colors text-gray-600">Contact</a>
                 </div>
                 
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
@@ -56,46 +62,35 @@
             <div id="mobile-menu" class="md:hidden hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Home</a>
-                    <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">About</a>
-                    <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Projects</a>
+                    <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">About</a> <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Projects</a>
                     <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Skills</a>
-                    <a href="#cv" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">CV</a>
-                    <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Contact</a>
+                    <a href="#cv" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">CV</a> <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
     
-    <section id="home" class="pt-24 pb-16 md:pt-28 md:pb-20 bg-gradient-to-r from-blue-50 to-indigo-50" data-aos="fade-in">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="home" class="pt-24 pb-16 md:pt-28 md:pb-20 bg-gradient-to-r from-blue-50 to-indigo-50" data-aos="fade-in"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
-                        Hello, I'm <span class="text-blue-600">Eros Alfedo Hermanto</span>
-                    </h1>
+                        Hello, I'm <span class="text-blue-600">Eros Alfedo Hermanto</span> </h1>
                     <h2 class="text-xl sm:text-2xl md:text-3xl text-gray-600 mb-6">
-                        Full-Stack Web Developer & Data Enthusiast
-                    </h2>
+                        Full-Stack Web Developer & Data Enthusiast </h2>
                     <p class="text-lg text-gray-700 mb-8 max-w-xl mx-auto md:mx-0">
-                        IT pro crafting web apps using full-stack & data, blending tech precision & usability for scalable real-world solutions.
-                    </p>
+                        IT pro crafting web apps using full-stack & data, blending tech precision & usability for scalable real-world solutions. </p>
                     <div class="flex space-x-4 justify-center md:justify-start">
                         <a href="#contact" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors duration-300 ease-in-out">
-                            Hire Me
-                        </a>
+                            Hire Me </a>
                         <a href="#projects" class="px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors duration-300 ease-in-out">
-                            View Projects
-                        </a>
+                            View Projects </a>
                     </div>
                 </div>
                 <div class="md:w-1/2 hidden md:flex justify-center mt-10 md:mt-0">
                     <img 
-                        src="https://placehold.co/500x500/EBF4FF/3B82F6?text=Eros+Alfedo+H" 
-                        alt="Eros Alfedo Hermanto" 
+                        src="https://placehold.co/500x500/EBF4FF/3B82F6?text=Eros+Alfedo+H" alt="Eros Alfedo Hermanto" 
                         class="rounded-full w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-blue-200 shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105"
-                        onerror="this.onerror=null;this.src='https://placehold.co/500x500/EBF4FF/3B82F6?text=Foto+Profil';"
-                    />
-                </div>
+                        onerror="this.onerror=null;this.src='https://placehold.co/500x500/EBF4FF/3B82F6?text=Foto+Profil';" /> </div>
             </div>
         </div>
     </section>
@@ -103,59 +98,41 @@
     <section id="about" class="py-20 bg-white" >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2> <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
             </div>
             
             <div class="flex flex-col md:flex-row items-center" data-aos="fade-up">
                 <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Web Developer & Data Enthusiast</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Web Developer & Data Enthusiast</h3> <p class="text-gray-700 mb-4">
+                        I have graduated with a Bachelor's degree in Information Technology from UIN Walisongo Semarang (May 2025). My academic journey provided me with a strong foundation in programming, web development, and software engineering principles. </p>
                     <p class="text-gray-700 mb-4">
-                        I have graduated with a Bachelor's degree in Information Technology from UIN Walisongo Semarang (May 2025). 
-                        My academic journey provided me with a strong foundation in programming, web development, and software engineering 
-                        principles.
-                    </p>
-                    <p class="text-gray-700 mb-4">
-                        As a web developer, I specialize in creating responsive, accessible, and visually appealing websites and applications. 
-                        I'm passionate about technology and always eager to learn new tools and frameworks to improve my skills
+                        As a web developer, I specialize in creating responsive, accessible, and visually appealing websites and applications. I'm passionate about technology and always eager to learn new tools and frameworks to improve my skills
                     </p>
                     <p class="text-gray-700">
-                        As a data enthusiast, I combine technical skills in Python, SQL, and data visualization tools to analyze datasets, 
-                        identify patterns, and derive actionable insights. I thrive on bridging data-driven decisions with web development to enhance application 
-                        functionality and user engagement.
-                    </p>
+                        As a data enthusiast, I combine technical skills in Python, SQL, and data visualization tools to analyze datasets, identify patterns, and derive actionable insights. I thrive on bridging data-driven decisions with web development to enhance application functionality and user engagement. </p>
                 </div>
                 <div class="md:w-1/2" data-aos="fade-up">
                     <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Education</h3>
-                        <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Education</h3> <div class="mb-6">
                             <h4 class="text-lg font-semibold text-gray-800">Bachelor of Information Technology</h4>
                             <p class="text-gray-600">UIN Walisongo Semarang</p>
-                            <p class="text-gray-500 text-sm">2021 - 2025</p>
-                        </div>
+                            <p class="text-gray-500 text-sm">2021 - 2025</p> </div>
                         
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Technical Skills</h3>
-                        <ul class="space-y-2">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Technical Skills</h3> <ul class="space-y-2">
                             <li class="flex items-center">
-                                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                                <span class="text-gray-700">Web Development</span>
+                                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span> <span class="text-gray-700">Web Development</span>
                             </li>
                             <li class="flex items-center">
-                                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                                <span class="text-gray-700">Data Analyze</span>
+                                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span> <span class="text-gray-700">Data Analyze</span>
                             </li>
                             <li class="flex items-center">
-                                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                                <span class="text-gray-700">Database Management (MySQL, PostgreSQL, Redis)</span>
-                            </li>
+                                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span> <span class="text-gray-700">Database Management (MySQL, PostgreSQL, Redis)</span> </li>
                             <li class="flex items-center">
                                 <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                                <span class="text-gray-700">Development Tools (Vs Code)</span>
-                            </li>
+                                <span class="text-gray-700">Development Tools (Vs Code)</span> </li>
                             <li class="flex items-center">
                                 <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                                <span class="text-gray-700">Version Control (Git, GitHub)</span>
-                            </li>
+                                <span class="text-gray-700">Version Control (Git, GitHub)</span> </li>
                         </ul>
                     </div>
                 </div>
@@ -166,26 +143,22 @@
     <section id="projects" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">My Projects</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">My Projects</h2> <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
-                    Here are some of my recent web development projects that showcase my skills and expertise.
+                    Here are some projects I have worked on. Click on each category for more details
                 </p>
             </div>
             
-            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
+            <div id="projects-accordion-container" class="max-w-5xl mx-auto space-y-4">
                 </div>
         </div>
     </section>
-    
     <section id="skills" class="py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">My Skills</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">My Skills</h2> <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
-                    I have experience and proficiency in the following areas and technologies.
-                </p>
+                    I have experience and proficiency in the following areas and technologies. </p>
             </div>
             
             <div id="skills-container" class="flex flex-wrap justify-center gap-4">
@@ -196,38 +169,29 @@
     <section id="cv" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Download My CV</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Download My CV</h2> <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
-                    Download both versions of my CV - one creative design and one optimized for ATS (Applicant Tracking Systems).
-                </p>
+                    Download both versions of my CV - one creative design and one optimized for ATS (Applicant Tracking Systems). </p>
             </div>
             <div class="flex flex-col md:flex-row justify-center items-stretch gap-8" data-aos="fade-up">
                 <div class="bg-white p-8 rounded-lg shadow-md w-full md:max-w-md transform transition-transform duration-300 hover:scale-105 flex flex-col">
                     <div class="flex items-center mb-4">
-                        <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        <h3 class="text-xl font-bold text-gray-900">Creative CV</h3>
+                        <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> <h3 class="text-xl font-bold text-gray-900">Creative CV</h3>
                     </div>
                     <p class="text-gray-600 mb-6 flex-grow">
-                        A visually appealing version of my CV that highlights my skills and experience in an engaging format.
-                    </p>
+                        A visually appealing version of my CV that highlights my skills and experience in an engaging format. </p>
                     <a href="Assets/CVKreatif.pdf" class="mt-auto inline-flex items-center justify-center px-5 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Download Creative CV
-                    </a>
+                        Download Creative CV </a>
                 </div>
                 <div class="bg-white p-8 rounded-lg shadow-md w-full md:max-w-md transform transition-transform duration-300 hover:scale-105 flex flex-col">
                     <div class="flex items-center mb-4">
-                        <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                        <h3 class="text-xl font-bold text-gray-900">ATS-Friendly CV</h3>
-                    </div>
+                        <svg class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg> <h3 class="text-xl font-bold text-gray-900">ATS-Friendly CV</h3> </div>
                     <p class="text-gray-600 mb-6 flex-grow">
-                        A standard, ATS-optimized version of my CV that's formatted for easy parsing by applicant tracking systems.
-                    </p>
+                        A standard, ATS-optimized version of my CV that's formatted for easy parsing by applicant tracking systems. </p>
                     <a href="Assets/CVATS.pdf" class="mt-auto inline-flex items-center justify-center px-5 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Download ATS-Friendly CV
-                    </a>
+                        Download ATS-Friendly CV </a>
                 </div>
             </div>
         </div>
@@ -236,42 +200,33 @@
     <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2> <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
-                    Have a question or want to work together? Feel free to reach out!
-                </p>
+                    Have a question or want to work together? Feel free to reach out! </p>
             </div>
             
             <div class="flex flex-col md:flex-row gap-12" data-aos="fade-up">
                 <div class="md:w-1/2">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-                    
-                    <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3> <div class="space-y-6">
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            </div>
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> </div>
                             <div class="ml-4">
                                 <h4 class="text-lg font-medium text-gray-900">Email</h4>
-                                <p class="text-gray-600">erosalfedo1@gmail.com</p>
-                            </div>
+                                <p class="text-gray-600">erosalfedo1@gmail.com</p> </div>
                         </div>
                         
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                            </div>
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> </div>
                             <div class="ml-4">
                                 <h4 class="text-lg font-medium text-gray-900">Phone</h4>
-                                <p class="text-gray-600">+62 899-0084-293</p>
-                            </div>
+                                <p class="text-gray-600">+62 899-0084-293</p> </div>
                         </div>
                         
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            </div>
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> </div>
                             <div class="ml-4">
                                 <h4 class="text-lg font-medium text-gray-900">Location</h4>
                                 <p class="text-gray-600">Semarang, Indonesia</p>
@@ -284,23 +239,19 @@
                     <form id="contact-form" class="space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your name" required>
-                        </div>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your name" required> </div>
                         
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your email" required>
-                        </div>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your email" required> </div>
                         
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Subject of your message">
-                        </div>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Subject of your message"> </div>
                         
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your message" required></textarea>
-                        </div>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your message" required></textarea> </div>
                         
                         <div>
                             <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors transform hover:scale-105 transition-transform">
@@ -320,10 +271,9 @@
                 <div class="mb-8 md:mb-0">
                     <h3 class="text-2xl font-bold text-blue-400">Eros Alfedo Hermanto</h3>
                     <p class="mt-2 text-gray-400 max-w-xs">
-                        Web Developer & Data Enthusiast based in Semarang, Indonesia
-                    </p>
+                        Web Developer & Data Enthusiast based in Semarang, Indonesia </p>
                 </div>
-                
+            
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
                     <div>
                         <h4 class="font-semibold text-white mb-4">Quick Links</h4>
@@ -331,38 +281,31 @@
                             <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                             <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
                             <li><a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
-                            <li><a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a></li>
-                        </ul>
+                            <li><a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a></li> </ul>
                     </div>
                     
                     <div>
                         <h4 class="font-semibold text-white mb-4">More</h4>
                         <ul class="space-y-2">
                             <li><a href="#cv" class="text-gray-400 hover:text-white transition-colors">CV</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                        </ul>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li> </ul>
                     </div>
                     
                     <div class="col-span-2 md:col-span-1">
                         <h4 class="font-semibold text-white mb-4">Connect With Me</h4>
                         <div class="flex space-x-4">
-                            <!-- Email -->
                             <a href="mailto:erosalfedo1@gmail.com" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" aria-label="Email">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2.25 4.5A2.25 2.25 0 0 1 4.5 2.25h15a2.25 2.25 0 0 1 2.25 2.25v15a2.25 2.25 0 0 1-2.25 2.25h-15A2.25 2.25 0 0 1 2.25 19.5v-15zm1.5 1.436v12.128l5.841-5.83-5.84-6.298zm1.478-.686h13.544L12 13.335 5.228 5.25zm15.272.686-5.84 6.298 5.841 5.83V5.936zM17.325 18.75l-5.325-5.317-5.325 5.317h10.65z"/>
-                                </svg>
+                                    <path d="M2.25 4.5A2.25 2.25 0 0 1 4.5 2.25h15a2.25 2.25 0 0 1 2.25 2.25v15a2.25 2.25 0 0 1-2.25 2.25h-15A2.25 2.25 0 0 1 2.25 19.5v-15zm1.5 1.436v12.128l5.841-5.83-5.84-6.298zm1.478-.686h13.544L12 13.335 5.228 5.25zm15.272.686-5.84 6.298 5.841 5.83V5.936zM17.325 18.75l-5.325-5.317-5.325 5.317h10.65z"/> </svg>
                             </a>
                             <a href="https://www.instagram.com/eros.alfedo" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" aria-label="Instagram">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm4.5-.625a1.125 1.125 0 1 1 0 2.25 1.125 1.125 0 0 1 0-2.25z"/>
-                                </svg>
+                                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm4.5-.625a1.125 1.125 0 1 1 0 2.25 1.125 1.125 0 0 1 0-2.25z"/> </svg>
                             </a>
                             <a href="https://www.linkedin.com/in/eros-alfedo-hermanto" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" aria-label="LinkedIn">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-                            </a>
-                             <a href="https://github.com/er0s0re" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" aria-label="GitHub">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-                            </a>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg> </a>
+                            <a href="https://github.com/er0s0re" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110" aria-label="GitHub">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg> </a>
                         </div>
                     </div>
                 </div>
@@ -370,8 +313,7 @@
             
             <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm">
-                    &copy; <span id="current-year"></span> Eros Alfedo Hermanto. All rights reserved.
-                </p>
+                    &copy; <span id="current-year"></span> Eros Alfedo Hermanto. All rights reserved. </p>
                 <div class="mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-white text-sm mr-6 transition-colors">Privacy Policy</a>
                     <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
@@ -381,30 +323,28 @@
     </footer>
 
     <script>
-        // Data Proyek (sama seperti di React)
+        // --- PERUBAHAN 1: Tambahkan 'category' pada data proyek ---
         const projectsData = [
-            { id: 1, title: "Online Cashier System", description: "A web-based point of sale system built with PHP, MySQL, and Bootstrap. Equipped with stock management features, multiple payment methods, and a comprehensive reporting system.", tags: ["Boostrap", "PHP", "MySQL"], imageUrl: "Assets/Pos.webp", detailUrl: "projects.html" },
-            { id: 2, title: "Repavingers", description: "Repavingers is a website project that addresses plastic waste by creating paving from plastic. This project was created by me and my colleagues to participate in Google's Hackfest 2024.", tags: ["Css", "PHP", "MySQL"], imageUrl: "Assets/Repavingers.webp", detailUrl: "projects1.html" },
-            { id: 3, title: "Rikos", description: "Rikos is a web platform for online boarding house room reservations, making it easier for tenants and administrators to manage. This project is the result of collaboration with my colleagues.", tags: ["Boostrap", "PHP", "MySQL"], imageUrl: "Assets/Rikos.webp", detailUrl: "projects2.html" },
-            { id: 4, title: "Sentiment Analysis of Presidential Candidate Debates", description: "Sentiment analysis of presidential candidate debates to understand public opinion and community reactions to the candidates' statements and performances.", tags: ["Python"], imageUrl: "Assets/Sentiment.webp", detailUrl: "https://github.com/er0s0re/Analisis-Sentiment-Debat-Capres/tree/main" },
-            { id: 5, title: "PM2.5 Data Analysis Project - Dicoding Submission", description: "PM2.5 data analysis project as a final assignment for the data analysis bootcamp at Dicoding, focusing on understanding air quality and its impact.", tags: ["Python"], imageUrl: "Assets/pm2.webp", detailUrl: "https://github.com/er0s0re/Proyek-Analisis-Data" },
-            { id: 6, title: "WhatsApp-based AI Chatbot", description: "Development of a WhatsApp-based chatbot using technologies such as Twilio, GPT-4o Mini, Langchain, Pinecone, FastAPI, Redis, and Python for better interaction.", tags: ["Python", "FastAPI", "Pinecone", "Twilio"], imageUrl: "Assets/Chatbot.webp", detailUrl: "chatbot2.html" }
-        ];
+            { id: 1, title: "Online Cashier System", category: "web", description: "A web-based point of sale system built with PHP, MySQL, and Bootstrap. Equipped with stock management features, multiple payment methods, and a comprehensive reporting system.", tags: ["Boostrap", "PHP", "MySQL"], imageUrl: "Assets/Pos.webp", detailUrl: "projects.html" }, 
+            { id: 2, title: "Repavingers", category: "web", description: "Repavingers is a website project that addresses plastic waste by creating paving from plastic. This project was created by me and my colleagues to participate in Google's Hackfest 2024.", tags: ["Css", "PHP", "MySQL"], imageUrl: "Assets/Repavingers.webp", detailUrl: "projects1.html" },
+            { id: 3, title: "Rikos", category: "web", description: "Rikos is a web platform for online boarding house room reservations, making it easier for tenants and administrators to manage. This project is the result of collaboration with my colleagues.", tags: ["Boostrap", "PHP", "MySQL"], imageUrl: "Assets/Rikos.webp", detailUrl: "projects2.html" }, 
+            { id: 4, title: "Sentiment Analysis of Presidential Candidate Debates", category: "data", description: "Sentiment analysis of presidential candidate debates to understand public opinion and community reactions to the candidates' statements and performances.", tags: ["Python"], imageUrl: "Assets/Sentiment.webp", detailUrl: "https://github.com/er0s0re/Analisis-Sentiment-Debat-Capres/tree/main" },
+            { id: 5, title: "PM2.5 Data Analysis Project - Dicoding Submission", category: "data", description: "PM2.5 data analysis project as a final assignment for the data analysis bootcamp at Dicoding, focusing on understanding air quality and its impact.", tags: ["Python"], imageUrl: "Assets/pm2.webp", detailUrl: "https://github.com/er0s0re/Proyek-Analisis-Data" }, 
+            { id: 6, title: "WhatsApp-based AI Chatbot", category: "data", description: "Development of a WhatsApp-based chatbot using technologies such as Twilio, GPT-4o Mini, Langchain, Pinecone, FastAPI, Redis, and Python for better interaction.", tags: ["Python", "FastAPI", "Pinecone", "Twilio"], imageUrl: "Assets/Chatbot.webp", detailUrl: "chatbot2.html" },
+            { id: 7, title: "To-Do List Odoo", category: "odoo", description: "MyList is a custom To-Do List module fully integrated with the Odoo platform, designed to enhance productivity and streamline your team's workflow.", tags: ["Python", "Odoo", "PostgreSQL"], imageUrl: "Assets/odoo_to_do_list.webp", detailUrl: "projects3.html" } ];
 
-        // Data Skills (level tidak akan digunakan untuk tampilan bar/angka lagi)
+        // Data Skills
         const skillsData = [
             { name: "Web Development", level: 90 }, 
             { name: "Python", level: 80 }, 
             { name: "JavaScript", level: 95 },
             { name: "Php", level: 90 }, 
-            { name: "MySQL", level: 85 }, 
-            { name: "PostgreSQL", level: 80 },
+            { name: "MySQL", level: 85 }, { name: "PostgreSQL", level: 80 },
             { name: "FastAPI", level: 80 },
             { name: "Machine Learning", level: 80 },
             { name: "Github", level: 80 },
             { name: "Git", level: 80 },
-            { name: "Redis", level: 80 },
-            { name: "Data Analysis", level: 80 },
+            { name: "Redis", level: 80 }, { name: "Data Analysis", level: 80 },
             { name: "Problem Solving", level: 90 }, 
             { name: "Team Collaboration", level: 85 }
         ];
@@ -416,8 +356,11 @@
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             const sections = document.querySelectorAll('section');
             const navbar = document.getElementById('navbar');
-            const projectsContainer = document.getElementById('projects-container');
-            const skillsContainer = document.getElementById('skills-container'); // Tetap ada
+            
+            // --- PERUBAHAN 2: Ganti 'projectsContainer' dengan 'projectsAccordionContainer' ---
+            const projectsAccordionContainer = document.getElementById('projects-accordion-container');
+            
+            const skillsContainer = document.getElementById('skills-container');
             const currentYearSpan = document.getElementById('current-year');
             const contactForm = document.getElementById('contact-form');
             const formStatusMessage = document.getElementById('form-status-message');
@@ -425,31 +368,30 @@
 
             // Mengisi tahun saat ini di footer
             if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
+                currentYearSpan.textContent = new Date().getFullYear(); /*  */
             }
 
             // Fungsi untuk toggle menu mobile
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
                     mobileMenu.classList.toggle('hidden');
-                });
+                }); /*  */
             }
 
             // Fungsi untuk menutup menu mobile setelah link diklik
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
+                         mobileMenu.classList.add('hidden'); /*  */
                     }
                 });
             });
-            
             // Fungsi untuk memperbarui link navigasi aktif
             function updateActiveNavLink(activeId) {
                 navLinks.forEach(link => {
                     link.classList.remove('nav-active', 'text-blue-600', 'font-medium');
                     link.classList.add('text-gray-600');
-                    if (link.getAttribute('href') === `#${activeId}`) {
+                    if (link.getAttribute('href') === `#${activeId}`) { /*  */
                         link.classList.add('nav-active', 'text-blue-600', 'font-medium');
                         link.classList.remove('text-gray-600');
                     }
@@ -459,17 +401,17 @@
                     link.classList.add('text-gray-600', 'hover:bg-gray-50', 'hover:text-gray-900');
                      if (link.getAttribute('href') === `#${activeId}`) {
                         link.classList.add('mobile-nav-active', 'bg-blue-50', 'text-blue-600');
-                        link.classList.remove('text-gray-600', 'hover:bg-gray-50', 'hover:text-gray-900');
+                         link.classList.remove('text-gray-600', 'hover:bg-gray-50', 'hover:text-gray-900'); /*  */
                     }
                 });
             }
 
             // Logika untuk active link berdasarkan scroll
             const observerOptions = {
-                root: null, // relatif terhadap viewport
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.4 // 40% dari section terlihat
-            };
+                threshold: 0.4 
+            }; /*  */
 
             const observerCallback = (entries) => {
                 entries.forEach(entry => {
@@ -478,64 +420,138 @@
                     }
                 });
             };
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            const observer = new IntersectionObserver(observerCallback, observerOptions); /*  */
             sections.forEach(section => observer.observe(section));
             
             const currentHash = window.location.hash.substring(1);
             if (currentHash) {
-                 updateActiveNavLink(currentHash);
+                 updateActiveNavLink(currentHash); /*  */
             } else {
-                 updateActiveNavLink('home'); 
+                 updateActiveNavLink('home'); /*  */
             }
 
+            // --- PERUBAHAN 3: Logika untuk Accordion Proyek ---
+            if (projectsAccordionContainer) {
+                // Definisikan kategori dan judulnya
+                const categories = {
+                    web: {
+                        title: 'Web Development Projects',
+                        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`
+                    },
+                    data: {
+                        title: 'Data Analysis & AI Projects',
+                        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`
+                    },
+                    odoo: {
+                        title: 'Odoo Projects',
+                        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-2.856 0L10 20l-6.572-6.572a2 2 0 00-2.856 2.856l6.572 6.572a2 2 0 002.856 0L22 18.284a2 2 0 000-2.856zM12 4.004l-7.293 7.293a1 1 0 00-.001 1.415L9.586 18a1 1 0 001.414 0L19.293 8.707a1 1 0 000-1.414L12 4.004z" /></svg>` // Icon SVG generik untuk Odoo
+                    }
+                };
+                
+                // Kelompokkan proyek berdasarkan kategori
+                const groupedProjects = projectsData.reduce((acc, project) => {
+                    (acc[project.category] = acc[project.category] || []).push(project);
+                    return acc;
+                }, {});
 
-            // Memuat Proyek
-            if (projectsContainer) {
-                projectsData.forEach(project => {
-                    const projectElement = `
-                        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                            <img src="${project.imageUrl}" alt="${project.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/969696?text=Image+Not+Found';">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">${project.title}</h3>
-                                <p class="text-gray-600 mb-4 text-sm">${project.description}</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    ${project.tags.map(tag => `<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">${tag}</span>`).join('')}
+                // Buat elemen accordion untuk setiap kategori
+                for (const categoryKey in groupedProjects) {
+                    const categoryInfo = categories[categoryKey];
+                    const projects = groupedProjects[categoryKey];
+                    
+                    const accordionItem = document.createElement('div');
+                    accordionItem.className = 'border border-gray-200 rounded-lg overflow-hidden';
+                    
+                    let projectsHTML = '';
+                    projects.forEach(project => {
+                        projectsHTML += `
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                                <img src="${project.imageUrl}" alt="${project.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/969696?text=Image+Not+Found';">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2">${project.title}</h3>
+                                    <p class="text-gray-600 mb-4 text-sm">${project.description}</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        ${project.tags.map(tag => `<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">${tag}</span>`).join('')}
+                                    </div>
+                                    <a href="${project.detailUrl}" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center group">
+                                        View Details
+                                        <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </a>
                                 </div>
-                                <a href="${project.detailUrl}" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center group">
-                                    View Details
-                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                                </a>
+                            </div>
+                        `;
+                    });
+
+                    accordionItem.innerHTML = `
+                        <h2>
+                            <button type="button" class="accordion-button flex items-center justify-between w-full p-5 font-medium text-left text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-colors">
+                                <span class="flex items-center">
+                                    ${categoryInfo.icon}
+                                    ${categoryInfo.title}
+                                </span>
+                                <svg class="accordion-icon w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                        </h2>
+                        <div class="accordion-panel">
+                            <div class="p-5 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                ${projectsHTML}
                             </div>
                         </div>
                     `;
-                    projectsContainer.innerHTML += projectElement;
+                    projectsAccordionContainer.appendChild(accordionItem);
+                }
+                
+                // Tambahkan event listener untuk setiap tombol accordion
+                const accordionButtons = document.querySelectorAll('.accordion-button');
+                accordionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const currentlyOpenPanel = document.querySelector('.accordion-panel.open');
+                        const panel = button.parentElement.nextElementSibling;
+
+                        // Tutup accordion lain jika ada yang terbuka
+                        if (currentlyOpenPanel && currentlyOpenPanel !== panel) {
+                            currentlyOpenPanel.style.maxHeight = 0;
+                            currentlyOpenPanel.classList.remove('open');
+                            currentlyOpenPanel.previousElementSibling.querySelector('.accordion-icon').classList.remove('rotate-180');
+                        }
+
+                        // Buka atau tutup accordion yang diklik
+                        if (panel.style.maxHeight && panel.style.maxHeight !== '0px') {
+                            panel.style.maxHeight = 0;
+                            panel.classList.remove('open');
+                            button.querySelector('.accordion-icon').classList.remove('rotate-180');
+                        } else {
+                            panel.style.maxHeight = panel.scrollHeight + "px";
+                            panel.classList.add('open');
+                            button.querySelector('.accordion-icon').classList.add('rotate-180');
+                        }
+                    });
                 });
             }
+
 
             // Memuat Skills dengan tampilan baru
             if (skillsContainer) {
                 skillsData.forEach(skill => {
-                    // Membuat elemen skill sebagai tag/badge
                     const skillElement = `
                         <div class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full shadow-sm hover:bg-blue-200 transition-colors cursor-default">
                             <span class="text-md font-medium">${skill.name}</span>
                         </div>
-                    `;
+                    `; /*  */
                     skillsContainer.innerHTML += skillElement;
-                });
+                }); /*  */
             }
-            // Kode untuk animasi progress bar SKILLS DIHAPUS karena tidak relevan lagi
-
+            
             // Handle submit form kontak
             if (contactForm) {
                 contactForm.addEventListener('submit', function(event) {
                     event.preventDefault(); 
-                    formStatusMessage.textContent = 'Mengirim pesan...';
+                    formStatusMessage.textContent = 'Mengirim pesan...'; /*  */
                     formStatusMessage.className = 'text-blue-600';
 
                     setTimeout(() => {
                         formStatusMessage.textContent = 'Pesan berhasil terkirim! Terima kasih.';
-                        formStatusMessage.className = 'text-green-600';
+                        formStatusMessage.className = 'text-green-600'; /*  */
                         contactForm.reset(); 
                     }, 2000);
                 });
