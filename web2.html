@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kasus Jaringan | Eros Alfedo H.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* * ==============================================
+         * STYLING & COLOR PALETTE BARU
+         * Tema: Cyber Tech / Futuristic
+         * Palet Warna:
+         * - Background: Deep Indigo (#0d0221)
+         * - Primary: Electric Magenta (#f0f)
+         * - Secondary: Bright Cyan (#0ff)
+         * - Accent: Lighter Purple (#a663cc)
+         * - Text: Light Lavender (#e0d8ff)
+         * - Card: Translucent Dark Purple
+         * ==============================================
+        */
+        :root {
+            --bg-dark: #0d0221;
+            --bg-light: #241b43;
+            --primary: #ff00f5;
+            --secondary: #00f5ff;
+            --accent: #a663cc;
+            --text-light: #e0d8ff;
+            --text-dark: #a99ec9;
+            --border-color: rgba(166, 99, 204, 0.3);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Latar Belakang Animasi Grid */
+        .animated-grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(to right, rgba(0, 245, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 245, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            from { background-position: 0 0; }
+            to { background-position: 50px 50px; }
+        }
+        
+        /* Kartu dengan Efek Kaca */
+        .glass-card {
+            background: rgba(36, 27, 67, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--secondary);
+        }
+
+        /* Garis Timeline dengan Efek Glow */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent);
+            z-index: 0;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--accent);
+        }
+        
+        /* Penanda Langkah pada Timeline (Default/Mobile) */
+        .step-card::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--bg-dark);
+            font-size: 1.25rem;
+            box-shadow: 0 0 15px var(--primary), 0 0 25px var(--secondary);
+            border: 2px solid var(--bg-dark);
+            z-index: 2;
+        }
+
+        /* Styling untuk Timeline Zigzag di Desktop */
+        @media (min-width: 1024px) {
+            .timeline-container > div:nth-child(odd) {
+                align-self: flex-start;
+                padding-right: 3rem;
+                text-align: right;
+            }
+            .timeline-container > div:nth-child(even) {
+                align-self: flex-end;
+                padding-left: 3rem;
+                text-align: left;
+            }
+            .timeline-container > div:nth-child(odd) .step-card::before {
+                left: auto;
+                right: -1.5rem; /* Posisi di kanan card */
+                transform: translateX(50%);
+            }
+            .timeline-container > div:nth-child(even) .step-card::before {
+                left: -1.5rem; /* Posisi di kiri card */
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Ikon Teknologi */
+        .tech-icon {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1) 0%, rgba(255, 0, 245, 0.1) 100%);
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.75rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0; /* Mencegah ikon mengecil */
+        }
+        .tech-item:hover .tech-icon {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Styling untuk Hasil Ping */
+        .ping-success { border-left: 4px solid var(--secondary); }
+        .ping-fail { border-left: 4px solid var(--primary); }
+        
+        /* Tombol Utama */
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-dark);
+            font-weight: 700;
+            padding: 0.8rem 2.2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 245, 0.4), 0 0 20px rgba(0, 245, 255, 0.4);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 245, 0.6), 0 0 30px rgba(0, 245, 255, 0.6);
+        }
+        
+        /* Tombol Sekunder */
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
+            font-weight: 600;
+            padding: 0.8rem 2.2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 245, 255, 0.1);
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-4px);
+        }
+        
+        /* Animasi Float */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Animasi Fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; }
+        
+        /* Judul Section */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 4rem;
+            color: white;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            box-shadow: 0 0 15px var(--primary), 0 0 15px var(--secondary);
+        }
+    </style>
+</head>
+<body class="relative">
+    <div class="animated-grid-bg"></div>
+
+    <!-- Header / Hero Section -->
+    <header class="min-h-screen flex items-center justify-center text-center px-4 py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        <div class="max-w-4xl z-10">
+            <div class="animate-float inline-block mb-8">
+                <div class="glass-card p-4 rounded-full shadow-lg">
+                    <i class="fas fa-network-wired text-4xl text-cyan-300" style="text-shadow: 0 0 15px var(--secondary);"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
+                <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 text-transparent bg-clip-text">Studi Kasus</span><br>
+                Jaringan Multi-Gedung
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+                Perjalanan merancang dan mengimplementasikan jaringan fungsional, aman, dan otomatis menggunakan Cisco Packet Tracer.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 md:gap-6 justify-center mt-10">
+                <a href="#journey" class="btn-primary">
+                    <i class="fas fa-rocket mr-2"></i>Mulai Perjalanan
+                </a>
+                <a href="https://github.com/ErosAlfredo/Simulasi-Jaringan-Multigedung-Packet-Tracer" target="_blank" class="btn-secondary">
+                    <i class="fab fa-github mr-2"></i>Lihat Proyek
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-24 px-4 max-w-7xl mx-auto relative z-10">
+        <!-- The Journey Section -->
+        <section id="journey" class="mb-24">
+            <h2 class="text-4xl font-bold text-center mb-20 section-title">Perjalanan Pembelajaran (5 Part)</h2>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Garis Timeline di tengah -->
+                <div class="timeline-line hidden lg:block"></div>
+                
+                <!-- Kontainer untuk step-step timeline -->
+                <div class="space-y-16 lg:space-y-0 flex flex-col items-center timeline-container">
+                    
+                    <!-- Step 1 (Kanan di Desktop) -->
+                    <div class="w-full lg:w-1/2 fade-in">
+                        <div class="glass-card p-8 pt-12 relative step-card" data-step="1">
+                            <h3 class="text-2xl font-bold text-cyan-300 mb-3">Desain & Perencanaan</h3>
+                            <p class="text-slate-300">Membangun fondasi dengan topologi Hub-and-Spoke. Memilih perangkat yang tepat (Router vs Switch) dan jenis kabel (Cross vs Straight) untuk setiap koneksi.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 (Kiri di Desktop) -->
+                    <div class="w-full lg:w-1/2 fade-in delay-1">
+                        <div class="glass-card p-8 pt-12 relative step-card" data-step="2">
+                            <h3 class="text-2xl font-bold text-cyan-300 mb-3">Pemberian Alamat IP</h3>
+                            <p class="text-slate-300">Memberi identitas unik ke setiap 'pintu' router. Menggunakan perintah `ip address` dan menyalakan port dengan `no shutdown` untuk membangun konektivitas dasar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Kanan di Desktop) -->
+                    <div class="w-full lg:w-1/2 fade-in delay-2">
+                        <div class="glass-card p-8 pt-12 relative step-card" data-step="3">
+                            <h3 class="text-2xl font-bold text-cyan-300 mb-3">Routing & Pemetaan Jaringan</h3>
+                            <p class="text-slate-300">Menjadi "GPS" bagi paket data. Mengkonfigurasi Static dan Default Route (`ip route`) agar semua jaringan bisa saling berkomunikasi tanpa tersesat.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 (Kiri di Desktop) -->
+                    <div class="w-full lg:w-1/2 fade-in delay-3">
+                        <div class="glass-card p-8 pt-12 relative step-card" data-step="4">
+                            <h3 class="text-2xl font-bold text-cyan-300 mb-3">Wireless & DHCP Server</h3>
+                            <p class="text-slate-300">Menyiapkan akses untuk pengguna. Mengatur SSID & WPA2-PSK di Access Point, serta mengkonfigurasi DHCP Server di router untuk alokasi IP otomatis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 (Kanan di Desktop) -->
+                    <div class="w-full lg:w-1/2 fade-in delay-4">
+                        <div class="glass-card p-8 pt-12 relative step-card" data-step="5">
+                            <h3 class="text-2xl font-bold text-cyan-300 mb-3">Simulasi & Kontrol Admin</h3>
+                            <p class="text-slate-300">Menguji skenario nyata. Mensimulasikan pengguna pindah gedung dan menjadi "Admin Tiran" dengan memutus koneksi via `shutdown` dan Access Control List (ACL).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Result Section -->
+        <section id="result" class="py-16">
+            <h2 class="text-4xl font-bold text-white text-center mb-20 section-title">Hasil Akhir & Teknologi</h2>
+            
+            <!-- Topologi -->
+            <div class="mb-24 fade-in">
+                <h3 class="text-3xl font-bold text-white mb-8 text-center">Topologi Jaringan Final</h3>
+                <!-- Wrapper untuk membatasi ukuran topologi di layar lebar -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="glass-card rounded-xl p-4 md:p-6 overflow-hidden">
+                        <div class="bg-black/30 rounded-lg overflow-hidden h-auto flex items-center justify-center p-2 md:p-4">
+                            <!-- SVG Diagram Topologi (dibuat lebih compact) -->
+                            <svg viewBox="0 0 800 400" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                                <style>
+                                    .line { stroke: #a663cc; stroke-width: 2; }
+                                    .line-main { stroke: #00f5ff; stroke-width: 3; stroke-dasharray: 8, 8; }
+                                    .device-text { font-family: 'Inter', sans-serif; fill: #e0d8ff; font-size: 14px; font-weight: 500; text-anchor: middle; }
+                                    .area-box { fill: rgba(36, 27, 67, 0.5); stroke-width:2; rx:15; }
+                                </style>
+                                <!-- Areas -->
+                                <rect x="50" y="50" width="250" height="300" class="area-box" stroke="#00f5ff"/>
+                                <text x="175" y="80" class="device-text" font-size="16px" fill="#00f5ff">Gedung A</text>
+                                <rect x="500" y="50" width="250" height="300" class="area-box" stroke="#ff00f5"/>
+                                <text x="625" y="80" class="device-text" font-size="16px" fill="#ff00f5">Gedung B</text>
+                                <rect x="325" y="220" width="150" height="130" class="area-box" stroke="#a663cc"/>
+                                <text x="400" y="245" class="device-text" font-size="16px" fill="#a663cc">Rumah Admin</text>
+
+                                <!-- Devices -->
+                                <text x="400" y="120" font-family="FontAwesome" font-size="40px" fill="#a663cc" text-anchor="middle">&#xf6ff;</text>
+                                <text x="400" y="155" class="device-text">Router Admin</text>
+                                
+                                <text x="175" y="120" font-family="FontAwesome" font-size="40px" fill="#00f5ff" text-anchor="middle">&#xf6ff;</text>
+                                <text x="175" y="155" class="device-text">Router A</text>
+                                
+                                <text x="625" y="120" font-family="FontAwesome" font-size="40px" fill="#ff00f5" text-anchor="middle">&#xf6ff;</text>
+                                <text x="625" y="155" class="device-text">Router B</text>
+
+                                <text x="175" y="230" font-family="FontAwesome" font-size="30px" fill="#00f5ff" text-anchor="middle">&#xf1eb;</text>
+                                <text x="175" y="260" class="device-text">Access Point A</text>
+
+                                <text x="625" y="230" font-family="FontAwesome" font-size="30px" fill="#ff00f5" text-anchor="middle">&#xf1eb;</text>
+                                <text x="625" y="260" class="device-text">Access Point B</text>
+                                
+                                <text x="400" y="290" font-family="FontAwesome" font-size="30px" fill="#a663cc" text-anchor="middle">&#xf108;</text>
+                                <text x="400" y="320" class="device-text">PC Admin</text>
+
+                                <!-- Connections -->
+                                <line x1="400" y1="160" x2="175" y2="160" class="line-main"/>
+                                <line x1="400" y1="160" x2="625" y2="160" class="line-main"/>
+                                <line x1="175" y1="165" x2="175" y2="210" class="line"/>
+                                <line x1="625" y1="165" x2="625" y2="210" class="line"/>
+                                <line x1="400" y1="165" x2="400" y2="280" class="line"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teknologi & Bukti -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Daftar Teknologi -->
+                <div class="fade-in delay-1">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Teknologi yang Digunakan</h3>
+                    <ul class="space-y-5">
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-route"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Static & Default Routing</h4>
+                                <p class="text-slate-400 mt-1">Membangun peta jaringan manual agar semua segmen terhubung.</p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-server"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">DHCP Server on Router</h4>
+                                <p class="text-slate-400 mt-1">Otomatisasi alokasi IP address untuk manajemen klien yang mudah.</p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-wifi"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">WLAN & WPA2-PSK</h4>
+                                <p class="text-slate-400 mt-1">Menyediakan konektivitas nirkabel yang aman untuk pengguna akhir.</p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-user-shield"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Access Control List (ACL)</h4>
+                                <p class="text-slate-400 mt-1">Filter lalu lintas untuk kontrol akses dan keamanan tingkat lanjut.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bukti Ping -->
+                <div class="fade-in delay-2">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Bukti Kontrol Admin</h3>
+                    <div class="space-y-6">
+                        <p class="text-slate-300 text-center">Tes membuktikan admin dapat memutus koneksi satu gedung penuh dari pusat kendali.</p>
+                        
+                        <div class="glass-card p-5 rounded-lg ping-success">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/30 flex items-center justify-center">
+                                    <i class="fas fa-check text-cyan-300"></i>
+                                </div>
+                                <h4 class="font-bold text-cyan-300">Koneksi Normal: BERHASIL</h4>
+                            </div>
+                            <div class="bg-black/40 rounded p-4 font-mono text-sm overflow-x-auto">
+                                <div class="text-cyan-300">> ping 10.10.10.1</div>
+                                <div class="text-cyan-300">> Reply from 10.10.10.1: bytes=32 time=2ms TTL=127</div>
+                                <div class="text-white mt-2">> Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card p-5 rounded-lg ping-fail">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-pink-500/30 flex items-center justify-center">
+                                    <i class="fas fa-power-off text-pink-400"></i>
+                                </div>
+                                <h4 class="font-bold text-pink-400">Setelah Interface di-Shutdown: GAGAL</h4>
+                            </div>
+                            <div class="bg-black/40 rounded p-4 font-mono text-sm overflow-x-auto">
+                                <div class="text-pink-400">> ping 10.10.10.1</div>
+                                <div class="text-yellow-400">> Reply from 20.20.20.1: Destination host unreachable.</div>
+                                <div class="text-white mt-2">> Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)</div>
+                                <div class="text-gray-500 mt-2">// Blocked by Admin at the Core Router</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-16 border-t border-purple-500/20 mt-16 relative z-10">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="glass-card inline-block p-4 rounded-full mb-6">
+                <img src="https://avatars.githubusercontent.com/u/87402363?v=4" alt="Eros Alfedo" class="w-16 h-16 rounded-full border-2 border-cyan-400" onerror="this.onerror=null;this.src='https://placehold.co/64x64/0d0221/e0d8ff?text=EA';">
+            </div>
+            
+            <h3 class="text-3xl font-bold text-white mb-2">Eros Alfedo Hermanto</h3>
+            <p class="text-slate-400 mb-6">Network Enthusiast & Full-Stack Developer</p>
+            
+            <div class="flex justify-center gap-5 mb-8">
+                <a href="https://github.com/er0s0re" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-cyan-300 hover:text-white hover:bg-cyan-500/50 transition-all duration-300">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/eros-alfedo-hermanto/" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-cyan-300 hover:text-white hover:bg-cyan-500/50 transition-all duration-300">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="mailto:erosalfedo1@gmail.com" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-cyan-300 hover:text-white hover:bg-cyan-500/50 transition-all duration-300">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+            
+            <p class="text-slate-500 text-sm">© 2025 | Didesain ulang dengan <i class="fas fa-heart text-pink-500"></i> dan secangkir kopi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animasi saat scroll menggunakan Intersection Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElems = document.querySelectorAll('.fade-in');
+            
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% elemen terlihat
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animasi langsung jalan via CSS, tidak perlu tambah class
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+            
+            fadeElems.forEach(elem => {
+                observer.observe(elem);
+            });
+        });
+    </script>
+</body>
+</html>

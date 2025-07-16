@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kasus Jaringan | Eros Alfedo H.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* * ==============================================
+         * STYLING & COLOR PALETTE BARU
+         * Tema: Cyber Tech / Futuristic
+         * Palet Warna:
+         * - Background: Deep Indigo (#0d0221)
+         * - Primary: Electric Magenta (#f0f)
+         * - Secondary: Bright Cyan (#0ff)
+         * - Accent: Lighter Purple (#a663cc)
+         * - Text: Light Lavender (#e0d8ff)
+         * - Card: Translucent Dark Purple
+         * ==============================================
+         */
+        :root {
+            --bg-dark: #0d0221;
+            --bg-light: #241b43;
+            --primary: #ff00f5;
+            --secondary: #00f5ff;
+            --accent: #a663cc;
+            --text-light: #e0d8ff;
+            --text-dark: #a99ec9;
+            --border-color: rgba(166, 99, 204, 0.3);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Latar Belakang Animasi Grid */
+        .animated-grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(to right, rgba(0, 245, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 245, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            from { background-position: 0 0; }
+            to { background-position: 50px 50px; }
+        }
+        
+        /* Kartu dengan Efek Kaca */
+        .glass-card {
+            background: rgba(36, 27, 67, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--secondary);
+        }
+        
+        /* === [BARU] CSS untuk Timeline Zigzag === */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 4rem; /* Jarak antar item */
+            clear: both;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item-content {
+            position: relative;
+            width: calc(50% - 2.5rem); /* 50% dikurangi gap */
+        }
+
+        /* Posisi item Ganjil (1, 3, 5, 7) ke KANAN */
+        .timeline-item:nth-child(odd) .timeline-item-content {
+            float: right;
+            text-align: left;
+        }
+
+        /* Posisi item Genap (2, 4, 6) ke KIRI */
+        .timeline-item:nth-child(even) .timeline-item-content {
+            float: left;
+            text-align: right;
+        }
+
+        /* Panah penunjuk untuk item KANAN */
+        .timeline-item:nth-child(odd) .timeline-item-content::after {
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 2rem;
+            height: 0;
+            width: 0;
+            border: 15px solid transparent;
+            border-right-color: var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+        .timeline-item:nth-child(odd):hover .timeline-item-content::after {
+            border-right-color: var(--secondary);
+        }
+
+
+        /* Panah penunjuk untuk item KIRI */
+        .timeline-item:nth-child(even) .timeline-item-content::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 2rem;
+            height: 0;
+            width: 0;
+            border: 15px solid transparent;
+            border-left-color: var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+        .timeline-item:nth-child(even):hover .timeline-item-content::after {
+            border-left-color: var(--secondary);
+        }
+
+        /* Penanda angka di tengah timeline */
+        .timeline-marker {
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            top: 1.5rem; /* Menyesuaikan posisi vertikal */
+            transform: translateX(-50%);
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--bg-dark);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+            box-shadow: 0 0 15px var(--primary), 0 0 25px var(--secondary);
+        }
+
+        /* === [BARU] CSS untuk Tampilan Mobile === */
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 1.5rem; /* Geser garis ke kiri */
+            }
+            .timeline-item-content {
+                width: 100%;
+                float: none !important;
+                padding-left: 4.5rem; /* Beri ruang dari garis */
+                text-align: left !important;
+            }
+            .timeline-item-content::after {
+                left: -15px !important;
+                right: auto;
+                border-color: transparent var(--border-color) transparent transparent !important;
+                border-width: 15px 15px 15px 0 !important;
+            }
+            .timeline-item:hover .timeline-item-content::after {
+                border-right-color: var(--secondary) !important;
+                border-left-color: transparent !important;
+            }
+            .timeline-marker {
+                left: 1.5rem; /* Posisikan marker di atas garis */
+                top: 0;
+            }
+        }
+        /* === Akhir CSS Timeline === */
+
+        /* Ikon Teknologi */
+        .tech-icon {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1) 0%, rgba(255, 0, 245, 0.1) 100%);
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.75rem;
+            transition: all 0.3s ease;
+        }
+        .tech-item:hover .tech-icon {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Styling untuk Hasil Ping */
+        .ping-success { border-left: 4px solid var(--secondary); }
+        .ping-fail { border-left: 4px solid var(--primary); }
+        
+        /* Tombol Utama */
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-dark);
+            font-weight: 700;
+            padding: 0.8rem 2.2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 245, 0.4), 0 0 20px rgba(0, 245, 255, 0.4);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 245, 0.6), 0 0 30px rgba(0, 245, 255, 0.6);
+        }
+        
+        /* Tombol Sekunder */
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
+            font-weight: 600;
+            padding: 0.8rem 2.2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 245, 255, 0.1);
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-4px);
+        }
+        
+        /* Animasi Float */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Animasi Fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
+        .delay-7 { animation-delay: 0.7s; }
+        
+        /* Judul Section */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 4rem;
+            color: white;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            box-shadow: 0 0 15px var(--primary), 0 0 15px var(--secondary);
+        }
+    </style>
+</head>
+<body class="relative">
+    <div class="animated-grid-bg"></div>
+
+    <!-- Header / Hero Section -->
+    <header class="min-h-screen flex items-center justify-center text-center px-4 py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        <div class="max-w-4xl z-10">
+            <div class="animate-float inline-block mb-8">
+                <div class="glass-card p-4 rounded-full shadow-lg">
+                    <i class="fas fa-atom text-4xl text-cyan-300" style="text-shadow: 0 0 15px var(--secondary);"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
+                <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 text-transparent bg-clip-text">Studi Kasus</span><br>
+                Membangun Jaringan Kantor dari Nol
+            </h1>
+            
+            <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+                Perjalanan merancang dan mengimplementasikan jaringan fungsional, aman, dan otomatis menggunakan Cisco Packet Tracer.
+            </p>
+            
+            <div class="flex flex-wrap gap-6 justify-center mt-10">
+                <a href="#journey" class="btn-primary">
+                    <i class="fas fa-rocket mr-2"></i>Mulai Perjalanan
+                </a>
+                <a href="https://github.com/ErosAlfredo/Belajar-Jaringan-Dasar-Cisco" target="_blank" class="btn-secondary">
+                    <i class="fab fa-github mr-2"></i>Lihat Proyek
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-24 px-4 max-w-7xl mx-auto relative z-10">
+        <!-- The Journey Section (DIUBAH) -->
+        <section id="journey" class="mb-24">
+            <h2 class="text-4xl font-bold text-center mb-20 section-title">Perjalanan Pembelajaran (7 Part)</h2>
+            
+            <div class="relative timeline-container max-w-5xl mx-auto px-4">
+                <!-- Step 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-item-content glass-card p-6 fade-in">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">Konektivitas Dasar</h3>
+                        <p class="text-slate-300">Memahami konsep paling dasar: menghubungkan dua PC secara langsung menggunakan kabel Cross-Over dan melakukan tes `ping` untuk pertama kalinya.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-item-content glass-card p-6 fade-in delay-1">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">Membangun LAN dengan Switch</h3>
+                        <p class="text-slate-300">Naik level dengan menggunakan Switch untuk membangun Local Area Network (LAN) dengan topologi Star, menghubungkan banyak PC secara efisien.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-item-content glass-card p-6 fade-in delay-2">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">Segmentasi VLAN</h3>
+                        <p class="text-slate-300">Mulai bermain dengan keamanan dan kerapian jaringan. Memecah satu LAN fisik menjadi dua LAN virtual (VLAN 10: IT, VLAN 20: Marketing) yang terisolasi.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-item-content glass-card p-6 fade-in delay-3">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">Inter-VLAN Routing</h3>
+                        <p class="text-slate-300">Menjadi "mak comblang" jaringan. Menggunakan Router-on-a-Stick untuk menjembatani komunikasi antar VLAN yang berbeda secara terkontrol.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-item-content glass-card p-6 fade-in delay-4">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">DHCP Server Otomatis</h3>
+                        <p class="text-slate-300">Menjadi "pemalas" yang efisien. Mengkonfigurasi Router sebagai DHCP server untuk memberikan alamat IP secara otomatis ke semua PC di setiap VLAN.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">6</div>
+                    <div class="timeline-item-content glass-card p-6 fade-in delay-5">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">Keamanan ACL</h3>
+                        <p class="text-slate-300">Menjadi "satpam galak". Menerapkan Access Control List (ACL) untuk memfilter lalu lintas, mengizinkan IT mengakses Marketing, tapi tidak sebaliknya.</p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">7</div>
+                    <div class="timeline-item-content glass-card p-6 fade-in delay-6">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">Koneksi Internet (NAT)</h3>
+                        <p class="text-slate-300">Membuka gerbang ke dunia luar. Mengkonfigurasi NAT agar semua PC dengan IP Private dapat terhubung ke jaringan "internet" simulasi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Result Section -->
+        <section id="result" class="py-16">
+            <h2 class="text-4xl font-bold text-white text-center mb-20 section-title">Hasil Akhir & Teknologi</h2>
+            
+            <!-- Topologi (DIUBAH) -->
+            <div class="mb-24 fade-in max-w-5xl mx-auto">
+                <h3 class="text-3xl font-bold text-white mb-8 text-center">Topologi Jaringan Final</h3>
+                <div class="glass-card rounded-xl p-6 overflow-hidden">
+                    <div class="bg-black/30 rounded-lg overflow-hidden h-auto flex items-center justify-center p-4">
+                        <!-- SVG Diagram Topologi -->
+                        <svg viewBox="0 0 800 500" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                            <style>
+                                .line { stroke: #a663cc; stroke-width: 2; }
+                                .line-main { stroke: #00f5ff; stroke-width: 3; }
+                                .device-text { font-family: 'Inter', sans-serif; fill: #e0d8ff; font-size: 14px; font-weight: 500; text-anchor: middle; }
+                                .vlan-it-fill { fill: rgba(0, 245, 255, 0.2); }
+                                .vlan-it-stroke { stroke: #00f5ff; }
+                                .vlan-mkt-fill { fill: rgba(255, 0, 245, 0.2); }
+                                .vlan-mkt-stroke { stroke: #ff00f5; }
+                            </style>
+                            <!-- Cloud (Internet) -->
+                            <path d="M 650,80 A 40,40 0 0,1 730,80 A 40,40 0 0,1 730,160 L 650,160 A 40,40 0 0,1 650,80 Z" fill="none" stroke="#e0d8ff" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="690" y="125" class="device-text">Internet</text>
+                            
+                            <!-- Router -->
+                            <circle cx="400" cy="120" r="30" fill="#241b43" stroke="#a663cc" stroke-width="2"/>
+                            <text x="400" y="125" class="device-text" font-size="20px"><tspan font-family="FontAwesome" fill="#00f5ff">&#xf1eb;</tspan></text>
+                            <text x="400" y="165" class="device-text">Router (NAT/ACL)</text>
+                            
+                            <!-- Switch -->
+                            <rect x="360" y="220" width="80" height="40" rx="5" fill="#241b43" stroke="#a663cc" stroke-width="2"/>
+                            <text x="400" y="245" class="device-text" font-size="20px"><tspan font-family="FontAwesome" fill="#00f5ff">&#xf6ff;</tspan></text>
+                            <text x="400" y="275" class="device-text">Switch</text>
+                            
+                            <!-- Koneksi -->
+                            <line x1="400" y1="150" x2="400" y2="220" class="line-main"/>
+                            <line x1="430" y1="120" x2="650" y2="120" class="line"/>
+                            <line x1="200" y1="300" x2="600" y2="300" class="line"/>
+                            
+                            <!-- VLAN IT -->
+                            <rect x="50" y="320" width="300" height="130" rx="10" class="vlan-it-fill" stroke-dasharray="5,5" stroke-width="2"/>
+                            <text x="200" y="345" class="device-text" fill="#00f5ff">VLAN 10: IT</text>
+                            <line x1="200" y1="300" x2="200" y2="360" class="line"/>
+                            <circle cx="125" cy="400" r="20" fill="#241b43" class="vlan-it-stroke" stroke-width="2"/>
+                            <text x="125" y="405" class="device-text" font-size="16px"><tspan font-family="FontAwesome">&#xf109;</tspan></text>
+                            <circle cx="275" cy="400" r="20" fill="#241b43" class="vlan-it-stroke" stroke-width="2"/>
+                            <text x="275" y="405" class="device-text" font-size="16px"><tspan font-family="FontAwesome">&#xf109;</tspan></text>
+                            
+                            <!-- VLAN Marketing -->
+                            <rect x="450" y="320" width="300" height="130" rx="10" class="vlan-mkt-fill" stroke-dasharray="5,5" stroke-width="2"/>
+                            <text x="600" y="345" class="device-text" fill="#ff00f5">VLAN 20: Marketing</text>
+                            <line x1="600" y1="300" x2="600" y2="360" class="line"/>
+                            <circle cx="525" cy="400" r="20" fill="#241b43" class="vlan-mkt-stroke" stroke-width="2"/>
+                            <text x="525" y="405" class="device-text" font-size="16px"><tspan font-family="FontAwesome">&#xf109;</tspan></text>
+                            <circle cx="675" cy="400" r="20" fill="#241b43" class="vlan-mkt-stroke" stroke-width="2"/>
+                            <text x="675" y="405" class="device-text" font-size="16px"><tspan font-family="FontAwesome">&#xf109;</tspan></text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teknologi & Bukti -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Daftar Teknologi -->
+                <div class="fade-in delay-1">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Teknologi yang Digunakan</h3>
+                    <ul class="space-y-5">
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-satellite-dish"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Router Cisco 2911 & Switch 2960</h4>
+                                <p class="text-slate-400 mt-1">Perangkat inti untuk routing, switching, dan keamanan.</p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-object-group"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">VLAN & Inter-VLAN Routing</h4>
+                                <p class="text-slate-400 mt-1">Segmentasi jaringan untuk efisiensi dan keamanan.</p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-server"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">DHCP Server on Router</h4>
+                                <p class="text-slate-400 mt-1">Otomatisasi alokasi IP address untuk manajemen mudah.</p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-user-shield"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Access Control List (ACL)</h4>
+                                <p class="text-slate-400 mt-1">Filter lalu lintas untuk kontrol akses antar VLAN.</p>
+                            </div>
+                        </li>
+                        <li class="glass-card p-5 rounded-lg flex items-center gap-5 tech-item">
+                            <div class="tech-icon"><i class="fas fa-globe"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Network Address Translation (NAT)</h4>
+                                <p class="text-slate-400 mt-1">Menghubungkan jaringan lokal ke internet global.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bukti Ping -->
+                <div class="fade-in delay-2">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Bukti Keberhasilan ACL</h3>
+                    <div class="space-y-6">
+                        <p class="text-slate-300 text-center">Tes membuktikan bahwa departemen IT bisa mengakses Marketing, namun tidak sebaliknya, sesuai aturan keamanan.</p>
+                        
+                        <div class="glass-card p-5 rounded-lg ping-success">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/30 flex items-center justify-center">
+                                    <i class="fas fa-check text-cyan-300"></i>
+                                </div>
+                                <h4 class="font-bold text-cyan-300">Ping dari IT ke Marketing: BERHASIL</h4>
+                            </div>
+                            <div class="bg-black/40 rounded p-4 font-mono text-sm overflow-x-auto">
+                                <div class="text-cyan-300">> Reply from 192.168.20.10: bytes=32 time=1ms TTL=128</div>
+                                <div class="text-cyan-300">> Reply from 192.168.20.10: bytes=32 time=2ms TTL=128</div>
+                                <div class="text-white mt-2">> Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card p-5 rounded-lg ping-fail">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-pink-500/30 flex items-center justify-center">
+                                    <i class="fas fa-times text-pink-400"></i>
+                                </div>
+                                <h4 class="font-bold text-pink-400">Ping dari Marketing ke IT: GAGAL</h4>
+                            </div>
+                            <div class="bg-black/40 rounded p-4 font-mono text-sm overflow-x-auto">
+                                <div class="text-pink-400">> Request timed out.</div>
+                                <div class="text-pink-400">> Request timed out.</div>
+                                <div class="text-white mt-2">> Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)</div>
+                                <div class="text-yellow-400 mt-2">// Blocked by Access Control List</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (DIUBAH) -->
+    <footer class="text-center py-16 border-t border-purple-500/20 mt-12 relative z-10">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="glass-card inline-block p-4 rounded-full mb-6">
+                <img src="https://avatars.githubusercontent.com/u/87402363?v=4" alt="Eros Alfedo" class="w-16 h-16 rounded-full border-2 border-cyan-400">
+            </div>
+            
+            <h3 class="text-3xl font-bold text-white mb-2">Eros Alfedo Hermanto</h3>
+            <p class="text-slate-400 mb-6">Network Enthusiast & Full-Stack Developer</p>
+            
+            <div class="flex justify-center gap-5 mb-8">
+                <a href="https://github.com/er0s0re" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-cyan-300 hover:text-white hover:bg-cyan-500/50 transition-all duration-300">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/eros-alfedo-hermanto/" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-cyan-300 hover:text-white hover:bg-cyan-500/50 transition-all duration-300">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="mailto:erosalfedo1@gmail.com" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-cyan-300 hover:text-white hover:bg-cyan-500/50 transition-all duration-300">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+            
+            <p class="text-slate-500 text-sm">© 2024 | Didesain ulang dengan <i class="fas fa-heart text-pink-500"></i> dan secangkir kopi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animasi saat scroll menggunakan Intersection Observer
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElems = document.querySelectorAll('.fade-in');
+            
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% elemen terlihat
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+            
+            fadeElems.forEach(elem => {
+                observer.observe(elem);
+            });
+        });
+    </script>
+</body>
+</html>
