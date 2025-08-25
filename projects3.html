@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyList Project - Integrasi To-Do List di Odoo</title>
+    <title>MyList Project - Odoo To-Do List Integration</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -52,11 +52,11 @@
             
             <!-- Menu untuk Desktop -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#tentang" class="text-gray-600 hover:text-odoo-purple-500 transition duration-300">Tentang Proyek</a>
-                <a href="#fitur" class="text-gray-600 hover:text-odoo-purple-500 transition duration-300">Fitur</a>
-                <a href="#demo" class="text-gray-600 hover:text-odoo-purple-500 transition duration-300">Demonstrasi</a>
+                <a href="#about" class="text-gray-600 hover:text-odoo-purple-500 transition duration-300">About Project</a>
+                <a href="#features" class="text-gray-600 hover:text-odoo-purple-500 transition duration-300">Features</a>
+                <a href="#demo" class="text-gray-600 hover:text-odoo-purple-500 transition duration-300">Demo</a>
                 <a href="#" class="bg-odoo-purple-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-odoo-purple-700 transition duration-300 shadow-md">
-                    Hubungi Saya
+                    Contact Me
                 </a>
             </div>
 
@@ -69,114 +69,111 @@
         </nav>
         <!-- Menu untuk Mobile (disembunyikan secara default) -->
         <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
-            <a href="#tentang" class="block py-2 text-gray-600 hover:text-odoo-purple-500">Tentang Proyek</a>
-            <a href="#fitur" class="block py-2 text-gray-600 hover:text-odoo-purple-500">Fitur</a>
-            <a href="#demo" class="block py-2 text-gray-600 hover:text-odoo-purple-500">Demonstrasi</a>
-            <a href="#" class="block mt-4 bg-odoo-purple-500 text-white font-semibold px-5 py-2 rounded-lg text-center hover:bg-odoo-purple-700">Hubungi Saya</a>
+            <a href="#about" class="block py-2 text-gray-600 hover:text-odoo-purple-500">About Project</a>
+            <a href="#features" class="block py-2 text-gray-600 hover:text-odoo-purple-500">Features</a>
+            <a href="#demo" class="block py-2 text-gray-600 hover:text-odoo-purple-500">Demo</a>
+            <a href="#" class="block mt-4 bg-odoo-purple-500 text-white font-semibold px-5 py-2 rounded-lg text-center hover:bg-odoo-purple-700">Contact Me</a>
         </div>
     </header>
 
     <main>
         <!-- ===== HERO SECTION ===== -->
-        <section class="bg-odoo-light py-20 md:py-32">
+    <section class="bg-odoo-light py-20 md:py-32" id="hero">
             <div class="container mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-odoo-purple-900 leading-tight mb-4">
-                    Manajemen Tugas Efisien <br class="hidden md:block"> Langsung di <span class="text-odoo-purple-500">Odoo</span>
+                    Efficient Task Management <br class="hidden md:block"> Directly in <span class="text-odoo-purple-500">Odoo</span>
                 </h1>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                    MyList adalah modul To-Do List kustom yang terintegrasi penuh dengan platform Odoo, dirancang untuk meningkatkan produktivitas dan alur kerja tim Anda.
+                    MyList is a custom To-Do List module fully integrated with the Odoo platform, designed to boost your team's productivity and workflow.
                 </p>
                 <div class="flex justify-center space-x-4">
                     <a href="#demo" class="bg-odoo-purple-500 text-white font-semibold px-8 py-3 rounded-lg hover:bg-odoo-purple-700 transition duration-300 shadow-lg transform hover:scale-105">
-                        Lihat Video Demo
+                        Watch Demo Video
                     </a>
-                    <a href="#fitur" class="bg-white text-odoo-purple-500 font-semibold px-8 py-3 rounded-lg border border-odoo-purple-500 hover:bg-odoo-purple-500 hover:text-white transition duration-300 shadow-lg transform hover:scale-105">
-                        Pelajari Fitur
+                    <a href="#features" class="bg-white text-odoo-purple-500 font-semibold px-8 py-3 rounded-lg border border-odoo-purple-500 hover:bg-odoo-purple-500 hover:text-white transition duration-300 shadow-lg transform hover:scale-105">
+                        Explore Features
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- ===== PROJECT DESCRIPTION SECTION ===== -->
-        <section id="tentang" class="py-20">
+    <section id="about" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-odoo-purple-900">Tentang Proyek MyList</h2>
-                    <p class="text-lg text-gray-500 mt-2">Solusi sederhana untuk masalah yang kompleks.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-odoo-purple-900">About MyList Project</h2>
+                    <p class="text-lg text-gray-500 mt-2">A simple solution for complex problems.</p>
                     <div class="mt-4 w-24 h-1 bg-odoo-purple-500 mx-auto rounded-full"></div>
                 </div>
                 <div class="max-w-4xl mx-auto text-center text-gray-700 leading-relaxed">
                     <p>
-                        Proyek MyList Odoo lahir dari kebutuhan untuk memiliki alat manajemen tugas yang simpel namun kuat, 
-                        tanpa harus meninggalkan ekosistem Odoo. Banyak aplikasi To-Do List yang ada di luar sana, tetapi seringkali 
-                        tidak terintegrasi dengan baik dengan sistem ERP yang sudah digunakan. Modul ini memungkinkan pengguna untuk 
-                        membuat, mengatur, menetapkan, dan melacak tugas pribadi atau tim langsung dari <b>Dashboard</b> Odoo mereka. 
-                        Tujuannya adalah mengurangi perpindahan antar aplikasi, menyederhanakan alur kerja, dan memastikan semua tugas 
-                        terkait proyek atau operasional tercatat di satu tempat.
+                        The MyList Odoo project was born from the need for a simple yet powerful task management tool, 
+                        without leaving the Odoo ecosystem. Many To-Do List apps exist, but often lack proper integration with the ERP system already in use. 
+                        This module allows users to create, organize, assign, and track personal or team tasks directly from their <b>Odoo Dashboard</b>. 
+                        The goal is to reduce switching between apps, simplify workflows, and ensure all project or operational tasks are recorded in one place.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- ===== PROJECT IMAGES & DESCRIPTION SECTION ===== -->
-        <section id="fitur" class="bg-odoo-light py-20">
+    <section id="features" class="bg-odoo-light py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-odoo-purple-900">Fitur Utama yang Ditawarkan</h2>
-                    <p class="text-lg text-gray-500 mt-2">Dirancang untuk kemudahan dan efisiensi.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-odoo-purple-900">Key Features Offered</h2>
+                    <p class="text-lg text-gray-500 mt-2">Designed for ease and efficiency.</p>
                      <div class="mt-4 w-24 h-1 bg-odoo-purple-500 mx-auto rounded-full"></div>
                 </div>
                 
-                <!-- Fitur 1: Integrasi Penuh -->
+                <!-- Feature 1: Full Integration -->
                 <div class="flex flex-col md:flex-row items-center mb-16">
                     <div class="md:w-1/2 p-6">
-                        <h3 class="text-2xl font-bold text-odoo-purple-900 mb-3">Integrasi Penuh dengan Odoo</h3>
+                        <h3 class="text-2xl font-bold text-odoo-purple-900 mb-3">Full Integration with Odoo</h3>
                         <p class="text-gray-700 mb-4">
-                            Tidak perlu lagi membuka aplikasi lain. Buat dan kelola tugas Anda langsung dari lingkungan Odoo yang sudah familiar. Terhubung dengan modul lain seperti Projects, CRM, atau Sales.
+                            No need to open another app. Create and manage your tasks directly from the familiar Odoo environment. Connects with other modules like Projects, CRM, or Sales.
                         </p>
                         <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Akses cepat dari menu utama Odoo.</li>
-                            <li>Kaitkan tugas dengan kontak atau dokumen.</li>
-                            <li>Tampilan yang konsisten dengan UI Odoo.</li>
+                            <li>Quick access from Odoo's main menu.</li>
+                            <li>Link tasks to contacts or documents.</li>
+                            <li>Consistent look and feel with Odoo UI.</li>
                         </ul>
                     </div>
                     <div class="md:w-1/2 p-6">
-                        <img src="Assets/images/todo_list_odoo/Homepage.webp" alt="Tampilan Dashboard MyList di Odoo" class="rounded-lg shadow-2xl w-full">
+                        <img src="Assets/images/todo_list_odoo/Homepage.webp" alt="MyList Dashboard view in Odoo" class="rounded-lg shadow-2xl w-full">
                     </div>
                 </div>
 
-                <!-- Fitur 2: Manajemen Tugas Kolaboratif -->
+                <!-- Feature 2: Collaborative Task Management -->
                 <div class="flex flex-col md:flex-row-reverse items-center mb-16">
                     <div class="md:w-1/2 p-6">
-                        <h3 class="text-2xl font-bold text-odoo-purple-900 mb-3">Manajemen Tugas Kolaboratif</h3>
+                        <h3 class="text-2xl font-bold text-odoo-purple-900 mb-3">Collaborative Task Management</h3>
                         <p class="text-gray-700 mb-4">
-                            Delegasikan tugas kepada anggota tim, atur tenggat waktu, dan pantau progres secara <b>real-time</b>. Setiap orang akan tahu apa yang harus dikerjakan.
+                            Delegate tasks to team members, set deadlines, and monitor progress in <b>real-time</b>. Everyone knows what needs to be done.
                         </p>
                         <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Assign tugas ke pengguna lain.</li>
-                            <li>Set prioritas (Rendah, Sedang, Tinggi).</li>
-                            <li>Tinggalkan komentar atau catatan pada setiap tugas.</li>
+                            <li>Assign tasks to other users.</li>
+                            <li>Set priorities (Low, Medium, High).</li>
+                            <li>Leave comments or notes on each task.</li>
                         </ul>
                     </div>
                     <div class="md:w-1/2 p-6">
-                        <img src="Assets/images/todo_list_odoo/catatan.webp" alt="Tampilan detail tugas kolaboratif" class="rounded-lg shadow-2xl w-full">
+                        <img src="Assets/images/todo_list_odoo/catatan.webp" alt="Collaborative task detail view" class="rounded-lg shadow-2xl w-full">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== YOUTUBE VIDEO SECTION ===== -->
-        <!-- ===== YOUTUBE VIDEO SECTION ===== -->
 <section id="demo" class="py-20">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-odoo-purple-900">Lihat Cara Kerjanya</h2>
-            <p class="text-lg text-gray-500 mt-2">Demonstrasi singkat fitur dan penggunaan modul MyList.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-odoo-purple-900">See How It Works</h2>
+            <p class="text-lg text-gray-500 mt-2">A brief demonstration of MyList module features and usage.</p>
             <div class="mt-4 w-24 h-1 bg-odoo-purple-500 mx-auto rounded-full"></div>
         </div>
         <div class="flex justify-center">
             <div class="w-full max-w-4xl">
-                <!-- Wrapper untuk video responsif -->
+                <!-- Responsive video wrapper -->
                 <div class="relative" style="padding-bottom: 56.25%;"> <!-- 16:9 Aspect Ratio -->
                     <iframe 
                         class="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl"
@@ -197,8 +194,8 @@
     <!-- ===== FOOTER ===== -->
     <footer class="bg-odoo-purple-900 text-white py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 Eros Alfedo Hermanto. Dibuat untuk Portofolio Proyek.</p>
-            <p class="text-sm text-gray-400 mt-2">Tema desain terinspirasi oleh Odoo.</p>
+            <p>&copy; 2025 Eros Alfedo Hermanto. Created for Project Portfolio.</p>
+            <p class="text-sm text-gray-400 mt-2">Design theme inspired by Odoo.</p>
         </div>
     </footer>
 
